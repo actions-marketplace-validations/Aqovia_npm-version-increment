@@ -14,6 +14,7 @@ runs:
   using: "composite"
   steps:
     - id: get-branch-name
+      shell: bash
       run: |
           # Get the current branch name
           BRANCH=$(git branch --show-current)
@@ -21,6 +22,7 @@ runs:
           echo "branch-name=$BRANCH" >> $GITHUB_OUTPUT
 
     - id: get-current-version
+      shell: bash
       run: |
           # Get the current version number
           CURRENT_VERSION=$(jq -r '.version' package.json)
@@ -28,6 +30,7 @@ runs:
           echo "current-version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
 
     - id: npm-version-increment
+      shell: bash
       run: |
           echo "Current branch is - $BRANCH"
           # Check if it's the master branch or not
@@ -42,6 +45,7 @@ runs:
           fi
 
     - id: get-new-version
+      shell: bash
       run: |
           # Get the updated version number
           NEW_VERSION=$(jq -r '.version' package.json)
@@ -49,6 +53,7 @@ runs:
           echo "new-version=$NEW_VERSION" >> $GITHUB_OUTPUT
 
     - id: git-commit
+      shell: bash
       run: |
           # Push the new tag to GitHub
           git push --follow-tags origin $BRANCH
