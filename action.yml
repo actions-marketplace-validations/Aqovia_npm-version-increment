@@ -32,7 +32,7 @@ runs:
     - id: npm-version-increment
       shell: bash
       run: |
-          $BRANCH=${{ steps.get-branch-name.outputs.current-version }}
+          BRANCH=${{ steps.get-branch-name.outputs.current-version }}
           echo "Current branch is - $BRANCH"
           # Check if it's the master branch or not
           if [ "$BRANCH" == "master" ] || [ "$BRANCH" == "main" ]; then
