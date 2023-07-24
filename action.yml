@@ -1,9 +1,5 @@
 name: 'NPM Version Incrementer'
 description: 'Increments the version of an NPM package based on the branch.'
-inputs:
-  input-parameter:
-    description: 'Description of the input parameter.'
-    required: true
 outputs:
   branch-name:
     description: 'The current branch name.'
